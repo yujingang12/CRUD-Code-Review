@@ -1,0 +1,21 @@
+<!--crudApp폴더에 있는 base.html의 파일을 상속받겠다!-->
+{% extends 'crudApp/index.html' %}
+<!--content가 들어갈 자리를 만들어줌. 콘텐츠가 들어갈 자리를 빵꾸뚫어서 틀만 가져다 댄거라 생각하면 됨.
+'block 무엇무엇'으로 시작하고 'endblock'으로 끝을 알려줌-->
+{% block content %}
+<section class="page-section" id="services">
+    <div class="container px-4 px-lg-5">
+        <!--글제목을 넣을 예정입니다-->
+          <!--작성 글을 보여주는 창! 제목과 작성일자, 작성자, 내용을 보여줌-->
+        <h2 class="text-center mt-0">제목 : {{post.title}}</h2>
+        <hr class="divider">
+        <p>작성 일지 및 시간: {{ post.pub_date }}</p>
+        <p>글쓴이 : {{ post.writer }}</p>
+        <p>내용 : {{ post.body }}</p>
+        <!--edit.html로 이동할 것인데, 여러 post모델 중 특정 아이디만 받을 것.-->
+        <a href="{% url 'edit' post.id %}">수정하기</a>
+        <!--삭제 할것인데 여러 post모델 중 특정 아이디만 받아와 삭제.-->
+        <a href="{% url 'delete' post.id %}">삭제하기</a>
+    </div>
+</section>
+{% endblock %}

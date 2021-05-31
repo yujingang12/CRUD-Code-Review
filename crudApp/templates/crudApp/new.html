@@ -1,0 +1,30 @@
+<!--crudApp폴더에 있는 base.html의 파일을 상속받겠다!-->
+{% extends 'crudApp/index.html' %}
+<!--content가 들어갈 자리를 만들어줌. 콘텐츠가 들어갈 자리를 빵꾸뚫어서 틀만 가져다 댄거라 생각하면 됨.
+'block 무엇무엇'으로 시작하고 'endblock'으로 끝을 알려줌-->
+{% block content %}
+<!--입력 창을 만들었음. -->
+<section class="page-section bg-primary" id="about">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-lg-8 text-center">
+                <!--CREATE FORM 들어갈 예정-->
+                <!-- form은 정보를 입력 받을 수 있는 태그로, action과 method 속성을 가지고 있음
+                action은 정보를 어디로 보내줄 것인지 설정하는 것이지만 form 사용시 장고가 html과 연결되어 있는 함수로 알아서 보내줌.
+                따라서 action을 작성할 필요는 없다! 
+                post방식을 통해 데이터를 보내줄 것임. post 방식은 데이터를 처리하여 보내줌. -->
+                <form method="POST">
+                    <!--공격으로부터 보호!-->
+                    {% csrf_token %}
+                    <table>
+                        <!--forms.py에서 만든 form을 테이블 형식으로 가져오겠다!-->
+                        {{ form.as_table }}
+                    </table>
+                     <!--버튼을 생성함, 버튼 누르면 제출!-->
+                    <button class="btn btn-primary btn-xl" type="submit">작성</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
