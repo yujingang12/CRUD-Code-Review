@@ -16,6 +16,6 @@ urlpatterns = [
     path('new/create/', crudApp.views.create, name='create'),
      #주소창 끝에 /edit를 쳐서 접속할 수 있음, 특정 게시물을 가져오는 것이기 때문에 id를 지정해줌,crudApp폴더 안에 view.py안에 edit이라는 함수를 적용시킨다. 이름은 edit으로 할 것임.
     path('edit/<str:id>/', crudApp.views.edit, name='edit'),
-      #주소창 끝에 /delete를 쳐서 접속할 수 있음, 특정 게시물을 가져오는 것이기 때문에 id를 지정해줌,crudApp폴더 안에 view.py안에 delete이라는 함수를 적용시킨다. 이름은 delete으로 할 것임.
+    #특정 게시물을 가져오는 것이기 때문에 id를 지정해줌,crudApp폴더 안에 view.py안에 delete이라는 함수를 적용시킨다. 이름은 delete으로 할 것임.
     path('delete/<str:id>/', crudApp.views.delete, name='delete'),
 ]

@@ -41,6 +41,10 @@ def create(request):
         return render(request, 'crudApp/new.html', {'form':form})
 
 #읽기페이지
+# def로 함수선언~ read란 이름의 함수는 요청받았을 때 
+# models.py에 있는 Post클래스로 만든 객체들을 posts라는 변수에 저장한다.
+# 반환한다(return), 불러옴으로써(render) 요청받았을 때 (request), crudApp파일에 read.html이란 html파일을 띄운다!
+# 그리고 posts라는 변수를 main.html로 넘길 때 posts라는 이름으로 넘기겠다!!
 def read(request):
     posts = Post.objects
     return render(request, 'crudApp/read.html', {'posts':posts})
